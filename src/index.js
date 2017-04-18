@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route, /*IndexRoute,*/ browserHistory } from '
 import reduxThunk from 'redux-thunk';
 
 import App from './App';
-import Address from './components/address';
+import AddressContainer from './components/containers/address_container';
 import './index.css';
 import reducers from './reducers';
 
@@ -18,7 +18,7 @@ ReactDOM.render(
     <Router history={browserHistory}>
       <div>
         <Route exact path="/" component={App} />
-        <Route path="/address" component={Address} />  
+        <Route path="/address" component={AddressContainer} />  
       </div>
     </Router>
   </Provider>  
