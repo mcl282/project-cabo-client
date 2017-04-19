@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {GoogleApiWrapper} from 'google-maps-react';
 import Address from '../address';
+import { googleApiKey } from '../../keys';
 
 
 class AddressContainer extends Component {
@@ -18,6 +19,6 @@ class AddressContainer extends Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey: 'AIzaSyAnhYQqHo2V5AcFpcKKPX6rz0bVrw7xmZg'
+  apiKey: googleApiKey
 })(AddressContainer)
 

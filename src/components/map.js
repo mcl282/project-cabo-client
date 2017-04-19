@@ -1,10 +1,11 @@
 /*global google*/
 import React, { Component } from 'react';
+import { googleApiKey } from '../keys';
 
 const MapComponent = ({ placeId, zoom }) => {
 
   
-  const key = 'AIzaSyAnhYQqHo2V5AcFpcKKPX6rz0bVrw7xmZg';
+  const key = googleApiKey;
   const root = 'https://www.google.com/maps/embed/v1/' 
     return(
       <div className="jumbotron">
@@ -16,7 +17,5 @@ const MapComponent = ({ placeId, zoom }) => {
       </div> 
     );
 }
-
-
 
 export default MapComponent;
