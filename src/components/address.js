@@ -51,7 +51,6 @@ class Address extends Component {
         console.log(place.place_id);
         console.log(resultLatitude);
         console.log(resultLongitude);
-        console.log(place.geometry.viewport);
         this.setState({ resultLatitude });
         this.setState({ resultLongitude });
         this.setState({ placeId });
@@ -71,8 +70,8 @@ class Address extends Component {
             This is me!
           </button>
           <MapComponent
-          placeId={this.state.placeId}
-          zoom={14}
+            placeId={this.state.placeId}
+            zoom={14}
           />       
         </div>
 
