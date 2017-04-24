@@ -8,6 +8,7 @@ import ReduxThunk from 'redux-thunk';
 import App from './App';
 import AddressContainer from './components/containers/address_container';
 import PropertyList from './components/property_list';
+import TestComponent from './components/test';
 import './index.css';
 import reducers from './reducers';
 
@@ -21,6 +22,7 @@ ReactDOM.render(
         <Route exact path="/" component={App} />
         <Route path="/address" component={AddressContainer} />
         <Route path="/property-list" component={PropertyList} />
+        <Route path="/test" component={TestComponent} />
       </div>
     </Router>
   </Provider>  
