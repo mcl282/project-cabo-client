@@ -3,14 +3,15 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import { BrowserRouter as Router, Route, /*IndexRoute,*/ browserHistory } from 'react-router-dom';
-import reduxThunk from 'redux-thunk';
+import ReduxThunk from 'redux-thunk';
 
 import App from './App';
 import AddressContainer from './components/containers/address_container';
+import PropertyList from './components/property_list';
 import './index.css';
 import reducers from './reducers';
 
-const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
+const createStoreWithMiddleware = applyMiddleware(ReduxThunk)(createStore);
 const store = createStoreWithMiddleware(reducers)
 
 ReactDOM.render(
@@ -18,7 +19,8 @@ ReactDOM.render(
     <Router history={browserHistory}>
       <div>
         <Route exact path="/" component={App} />
-        <Route path="/address" component={AddressContainer} />  
+        <Route path="/address" component={AddressContainer} />
+        <Route path="/property-list" component={PropertyList} />
       </div>
     </Router>
   </Provider>  

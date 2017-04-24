@@ -8,8 +8,7 @@ class Address extends Component {
       this.handlePlaceSubmit = this.handlePlaceSubmit.bind(this);
       this.state = {
         inputBar: "Enter your address",
-        resultLatitude: null,
-        resultLongitude: null,
+        placeArray: [],
         googlePlaceId: null,
         placeLookUp: false
       }
@@ -35,6 +34,7 @@ class Address extends Component {
       });
     }
   }  
+
   
   handlePlaceSubmit(e) {
     if(e){
@@ -44,29 +44,26 @@ class Address extends Component {
     }
     const place = this.autocomplete.getPlace();
       if(place){
-        const resultLatitude = place.geometry.location.lat();
-        const resultLongitude = place.geometry.location.lng();
         const placeId = place.place_id; 
-        console.log(place);
-        console.log(place.place_id);
-        console.log(resultLatitude);
-        console.log(resultLongitude);
-        this.setState({ resultLatitude });
-        this.setState({ resultLongitude });
+        this.setState({ placeArray: place.address_components })
         this.setState({ placeId });
         this.setState({placeLookUp: true});
+        console.log(this.state.placeArray[0].short_name)
       } else {
         console.log('waiting');
       }
-      
   }
+  
   
   render() {
     let showMap = null;
     if(this.state.placeLookUp){
       showMap =
         <div>
-          <button className="btn btn-primary btn-lg btn-block">
+          <button 
+            className="btn btn-primary btn-lg btn-block"
+            onSubmit={this.handleSubmit}
+            >
             This is me!
           </button>
           <MapComponent

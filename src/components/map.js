@@ -1,10 +1,9 @@
 /*global google*/
-import React, { Component } from 'react';
+import React from 'react';
 import { googleApiKey } from '../keys';
 
 const MapComponent = ({ placeId, zoom }) => {
 
-  
   const key = googleApiKey;
   const root = 'https://www.google.com/maps/embed/v1/' 
     return(
