@@ -6,9 +6,7 @@
     "/**": "index.html"
   },
   "proxies": {
-  "/api/": {
     "origin": "${API_URL}"
-    }
   }
 }
 
