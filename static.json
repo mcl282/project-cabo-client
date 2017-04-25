@@ -5,13 +5,11 @@
   "routes": {
     "/**": "index.html"
   },
-  
-},
-
-{
-  "proxies": {
+    "proxies": {
     "/api/": {
-      "origin": "${https://cabo-server.herokuapp.com}"
+      "origin": "${API_URL}"
     }
   }
+
 }
+
