@@ -5,6 +5,7 @@
   "proxy": "https://project-cabo-mcl282.c9users.io",
   "dependencies": {
     "axios": "^0.16.1",
+    "dotenv": "^4.0.0",
     "google-maps-react": "^1.0.19",
     "react": "^15.5.4",
     "react-bootstrap": "^0.30.8",
