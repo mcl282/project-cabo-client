@@ -53,8 +53,17 @@ export function signupUser(values, callback) {
     axios.post(`${ROOT_URL}/users.json`, {user: {email, password}})
       .then(response => {
         dispatch({ type: AUTH_USER });
-        localStorage.setItem('token', response.data.token);
       })
+      .then(
+        axios.post(`${ROOT_URL}/user_token.json`, { auth: { email, password } })  
+          .then(response => {
+            //if request is good, update state to indicate user is authenticated
+            dispatch({ type: AUTH_USER});
+            //-save the jwt token
+            localStorage.setItem('jwt', response.jwt);
+            console.log(response.data);
+          })        
+        )
       .then(() => callback())
       .catch(({ response }) => dispatch(authError(response.data.error)));
   }
