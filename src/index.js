@@ -2,10 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import { BrowserRouter as Router, Route, /*IndexRoute,*/ browserHistory } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import ReduxThunk from 'redux-thunk';
 
 import App from './App';
+import Signin from './components/auth/signin';
+import Signup from './components/auth/signup';
 import AddressContainer from './components/containers/address_container';
 import PropertyList from './components/property_list';
 import TestComponent from './components/test';
@@ -17,14 +19,18 @@ const store = createStoreWithMiddleware(reducers)
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={browserHistory}>
+    <BrowserRouter>
       <div>
-        <Route exact path="/" component={App} />
-        <Route path="/address" component={AddressContainer} />
-        <Route path="/property-list" component={PropertyList} />
-        <Route path="/test" component={TestComponent} />
+        <Switch>
+          <Route exact path="/" component={App} />
+          <Route path="/signup" component={Signup} />
+          <Route path="/signin" component={Signin} />
+          <Route path="/address" component={AddressContainer} />
+          <Route path="/property-list" component={PropertyList} />
+          <Route path="/test" component={TestComponent} />
+        </Switch>
       </div>
-    </Router>
+    </BrowserRouter>
   </Provider>  
   ,
   document.getElementById('root')

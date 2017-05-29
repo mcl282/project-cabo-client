@@ -5,7 +5,7 @@ import PropertyListItem from './property_list_item';
 
 class PropertyList extends Component {
 
-  componentWillMount(){
+  componentDidMount(){
     this.props.fetchProperties()
   }
   
