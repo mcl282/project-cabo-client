@@ -25,12 +25,13 @@ export function signinUser(values, callback) {
       //if request is good, update state to indicate user is authenticated
       dispatch({ type: AUTH_USER});
       //-save the jwt token
-      localStorage.setItem('jwt', response.jwt);
+      localStorage.setItem('jwt', response.data.jwt);
       console.log(response.data);
     })
     .then(() => callback())
     .catch( error => {
     //if request is bad, show an error to the user
+    console.log(error);
     dispatch(authError(error));
     })
   
@@ -52,20 +53,13 @@ export function signupUser(values, callback) {
   return function(dispatch) {
     axios.post(`${ROOT_URL}/users.json`, {user: {email, password}})
       .then(response => {
-        dispatch({ type: AUTH_USER });
+        console.log(response);
+        localStorage.setItem('jwt', response.data.jwt);
       })
-      .then(
-        axios.post(`${ROOT_URL}/user_token.json`, { auth: { email, password } })  
-          .then(response => {
-            //if request is good, update state to indicate user is authenticated
-            dispatch({ type: AUTH_USER});
-            //-save the jwt token
-            localStorage.setItem('jwt', response.jwt);
-            console.log(response.data);
-          })        
-        )
       .then(() => callback())
-      .catch(({ response }) => dispatch(authError(response.data.error)));
+      .catch(({ response }) => {
+        dispatch(authError(response.data))
+      });
   }
 }
 

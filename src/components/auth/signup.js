@@ -72,7 +72,8 @@ class Signup extends Component {
           name="passwordConfrm"
           type="password"
           component={this.renderField}
-        />   
+        />
+        {this.renderAlert()}
         <button type="submit" className="btn btn-primary">Sign Up</button>
       </form>
     );

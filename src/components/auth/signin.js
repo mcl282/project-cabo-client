@@ -35,8 +35,6 @@ class Signin extends Component {
   }
 
   onSubmit(values) {
-    console.log(values.email, values.password);
-    
     this.props.signinUser(values, () => {
       this.props.history.push('/test');
     });
@@ -47,7 +45,7 @@ class Signin extends Component {
     if(this.props.errorMessage) {
       return (
         <div className="alert alert-danger">
-          <strong>Oops!  </strong>{this.props.errorMessage}
+          <strong>Oops!  There was an error with your E-Mail / Password combination. Please try again.</strong>
         </div>  
       )
     }
