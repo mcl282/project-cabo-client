@@ -38,6 +38,10 @@ export function signinUser(values, callback) {
   };
   
 }
+export function signoutUser() {
+  localStorage.removeItem('token');
+  return {type: UNAUTH_USER }
+}
 
 export function authError(error) {
   return {
@@ -58,8 +62,33 @@ export function signupUser(values, callback) {
       })
       .then(() => callback())
       .catch(({ response }) => {
-        dispatch(authError(response.data))
+        dispatch(authError(response.data));
       });
+  };
+}
+
+export function requestPasswordReset(email, callback){
+  return function(dispatch){
+    signoutUser();
+    axios.post(`${ROOT_URL}/password_resets.json`, email)
+      .then(() => callback())
+      .catch(({ response }) => {
+        dispatch(authError(response.data.info));
+      });
+  };
+}
+
+
+export function resetPassword(email, password, resetToken, callback) {
+  return function(dispatch){
+    axios.patch(`${ROOT_URL}/password_resets/${resetToken}.json`, {email: email, newPassword: password})
+    .then( response => {
+      localStorage.setItem('jwt', response.data.jwt);
+    })
+    .then(() => callback())
+    .catch(({ response }) => {
+      dispatch(authError(response.data))
+    });
   }
 }
 
