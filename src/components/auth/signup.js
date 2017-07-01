@@ -33,7 +33,7 @@ class Signup extends Component {
 
   onSubmit(values) {
     this.props.signupUser(values, () => {
-      this.props.history.push('/test');
+      this.props.history.push('/test-protected');
     });
   }  
   

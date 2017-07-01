@@ -39,7 +39,7 @@ class PasswordReset extends Component {
     const resetToken = this.props.match.params.resetToken;
     
     this.props.resetPassword(email, password, resetToken, () => {
-      this.props.history.push('/test');
+      this.props.history.push('/test-protected');
     });
   }    
 

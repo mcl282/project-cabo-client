@@ -3,7 +3,7 @@ import React from 'react';
 const TestComponent = () => {
   return (
     <div>
-      <p>This test component is working</p>
+      <p>This test component is working - unprotected route</p>
     </div>
     )
 }

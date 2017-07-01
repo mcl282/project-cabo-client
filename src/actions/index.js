@@ -39,7 +39,7 @@ export function signinUser(values, callback) {
   
 }
 export function signoutUser() {
-  localStorage.removeItem('token');
+  localStorage.removeItem('jwt');
   return {type: UNAUTH_USER }
 }
 
@@ -58,8 +58,10 @@ export function signupUser(values, callback) {
     axios.post(`${ROOT_URL}/users.json`, {user: {email, password}})
       .then(response => {
         console.log(response);
+        dispatch({ type: AUTH_USER});
         localStorage.setItem('jwt', response.data.jwt);
       })
+      .then()
       .then(() => callback())
       .catch(({ response }) => {
         dispatch(authError(response.data));
@@ -83,6 +85,7 @@ export function resetPassword(email, password, resetToken, callback) {
   return function(dispatch){
     axios.patch(`${ROOT_URL}/password_resets/${resetToken}.json`, {email: email, newPassword: password})
     .then( response => {
+      dispatch({ type: AUTH_USER});
       localStorage.setItem('jwt', response.data.jwt);
     })
     .then(() => callback())
