@@ -5,7 +5,8 @@ export default function(state={}, action) {
     case FETCH_PROPERTIES:
       return {...state, properties: action.payload};
     case FETCH_ZPID:
-      return {...state, zpid: action.payload};      
+      return {...state, zpid: action.payload};  
+    // no default
   }
   return state;
 }

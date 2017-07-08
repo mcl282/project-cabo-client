@@ -4,15 +4,6 @@ import { Field, reduxForm } from 'redux-form';
 import * as actions from '../../actions';
 import { Link } from 'react-router-dom';
 
-const renderInput = field => {
-    const { input, type } = field;
-    return (
-        <div>
-            <input {...input} type={type} className="form-control" />
-        </div>
-    );
-}
-
 class Signin extends Component {
     
   renderField(field) {
@@ -57,6 +48,7 @@ class Signin extends Component {
     const { handleSubmit } = this.props;
   
     return (
+      <div>
         <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
           <Field
             label="Email:"
@@ -71,8 +63,13 @@ class Signin extends Component {
             component={this.renderField}
           /> 
           {this.renderAlert()}
+          <div>
+            <Link className="nav-link" to="/request-password-reset">Forgot password?</Link>  
+          </div>
+          <br/>
           <button type="submit" className="btn btn-primary">Sign in</button>
         </form>
+      </div>
     );
   }
   }

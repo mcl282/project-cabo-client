@@ -2,10 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, IndexRoute, Switch } from 'react-router-dom';
 import ReduxThunk from 'redux-thunk';
 
 import App from './App';
+import Header from './components/header';
+import Welcome from './components/welcome';
 import Signin from './components/auth/signin';
 import Signup from './components/auth/signup';
 import Signout from './components/auth/signout';
@@ -35,8 +37,10 @@ ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <div>
+        <App/>
+        <Header/>
         <Switch>
-          <Route exact path="/" component={App} />
+          <Route exact path="/" component={Welcome} />
           <Route path="/signup" component={Signup} />
           <Route path="/signin" component={Signin} />
           <Route path="/signout" component={Signout} />

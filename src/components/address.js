@@ -27,6 +27,7 @@ class Address extends Component {
   geolocate() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position) {
+        // eslint-disable-next-line
         const geolocation = {
           lat: position.coords.latitude,
           lng: position.coords.longitude

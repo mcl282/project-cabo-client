@@ -3,14 +3,6 @@ import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form';
 import * as actions from '../../actions';
 
-const renderField = ({ input, label, type, meta: { touched, error, warning } }) => (
-  <fieldset className="form-group">
-    <label htmlFor={input.name}>{label}</label>
-    <input className="form-control" {...input} type={type}/>
-    { touched && error && <span className="text-danger">{error}</span> }
-  </fieldset>
-);
-
 class Signup extends Component {
   renderField(field) {
     const { meta: { touched, error } } = field;

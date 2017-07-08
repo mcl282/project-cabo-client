@@ -2,16 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import * as actions from '../../actions';
-import { Link } from 'react-router-dom';
-
-const renderInput = field => {
-    const { input, type } = field;
-    return (
-        <div>
-            <input {...input} type={type} className="form-control" />
-        </div>
-    );
-}
 
 class PasswordReset extends Component {
     
