@@ -12,7 +12,7 @@ class Signin extends Component {
   
     return (
       <div className={className}>
-        <label>{field.label}</label>
+        <label>{field.label}</label> 
         <input
           className="form-control"
           type={field.type}
@@ -46,6 +46,7 @@ class Signin extends Component {
   render(){
     
     const { handleSubmit } = this.props;
+    const passwordResetLink = <Link className="nav-link" to="/request-password-reset">Forgot password?</Link>
   
     return (
       <div>
@@ -63,12 +64,10 @@ class Signin extends Component {
             component={this.renderField}
           /> 
           {this.renderAlert()}
-          <div>
-            <Link className="nav-link" to="/request-password-reset">Forgot password?</Link>  
-          </div>
           <br/>
           <button type="submit" className="btn btn-primary">Sign in</button>
         </form>
+        {passwordResetLink}
       </div>
     );
   }

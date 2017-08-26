@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import {   Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+import { connect } from 'react-redux';
 
 
 class Header extends Component {
@@ -17,6 +18,28 @@ class Header extends Component {
     this.props.history.push('/signup');
   }  
   
+  renderSignout = () => {
+    if(this.props.authenticated){
+      return(
+        <NavItem eventKey={4}  onSelect={this.handleSignout}>Signout</NavItem>
+        );
+    }
+  } 
+  renderSignin = () => {
+    if(!this.props.authenticated){
+      return(
+        <NavItem eventKey={5}  onSelect={this.handleSignin}>Signin</NavItem>
+        );
+    }
+  }   
+
+  renderSignup = () => {
+    if(!this.props.authenticated){
+      return(
+        <NavItem eventKey={6}  onSelect={this.handleSignup}>Signup</NavItem>
+        );
+    }
+  }   
    render() {
     
       return (
@@ -36,15 +59,20 @@ class Header extends Component {
               <MenuItem divider />
               <MenuItem eventKey={3.3}>Separated link</MenuItem>
             </NavDropdown>
-            <NavItem eventKey={4}  onSelect={this.handleSignout}>Signout</NavItem>
-            <NavItem eventKey={5}  onSelect={this.handleSignin}>Signin</NavItem>
-            <NavItem eventKey={6}  onSelect={this.handleSignup}>Signup</NavItem>
+            {this.renderSignout()}
+            {this.renderSignin()}
+            {this.renderSignup()}
           </Nav>
         </Navbar>
       );
     }
 }
 
-export default withRouter(Header);
+function mapStateToProps(state) {
+  // form: state.form,
+  return { authenticated: state.auth.authenticated };
+  }
+
+export default connect(mapStateToProps)(withRouter(Header))
 
 
