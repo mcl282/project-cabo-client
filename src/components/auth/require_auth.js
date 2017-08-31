@@ -9,7 +9,7 @@ export default function(ComposedComponent) { //ComposedComponent is convention
 
     componentWillMount() {
       if (!this.props.authenticated) {
-        this.props.history.push('/');//
+        this.props.history.push('/signin');//
       }
     }
 

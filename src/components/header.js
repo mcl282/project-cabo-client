@@ -6,29 +6,33 @@ import { connect } from 'react-redux';
 
 class Header extends Component {
 
-  handleSignout = () => {
-    this.props.history.push('/signout');
-  }  
+
+  handleSelect = (eventKey, event) => {
+    this.props.history.push(`/${event.target.attributes[0].value}`);
+  }    
   
-  handleSignin = () => {
-    this.props.history.push('/signin');
-  }  
-  
-  handleSignup = () => {
-    this.props.history.push('/signup');
-  }  
   
   renderSignout = () => {
     if(this.props.authenticated){
       return(
-        <NavItem eventKey={4}  onSelect={this.handleSignout}>Signout</NavItem>
+        <NavItem 
+          eventKey={4}  
+          onSelect={this.handleSignout} 
+          value="signout">
+            Signout
+        </NavItem>
         );
     }
   } 
   renderSignin = () => {
     if(!this.props.authenticated){
       return(
-        <NavItem eventKey={5}  onSelect={this.handleSignin}>Signin</NavItem>
+        <NavItem 
+          eventKey={5}  
+          onSelect={this.handleSelect} 
+          value="signin">
+            Signin
+        </NavItem>
         );
     }
   }   
@@ -36,10 +40,31 @@ class Header extends Component {
   renderSignup = () => {
     if(!this.props.authenticated){
       return(
-        <NavItem eventKey={6}  onSelect={this.handleSignup}>Signup</NavItem>
+        <NavItem 
+          eventKey={6}  
+          onSelect={this.handleSelect} 
+          value="signup">
+            Signup
+        </NavItem>
         );
     }
-  }   
+  }
+
+  renderProtectedPage = () => {
+    if(!this.props.authenticated){
+      return(
+        <NavItem 
+          eventKey={7}  
+          onSelect={this.handleSelect} 
+          value="test-protected">
+            Protected Page
+        </NavItem>
+        );
+    }
+  }
+  
+  
+  
    render() {
     
       return (
@@ -50,7 +75,7 @@ class Header extends Component {
             </Navbar.Brand>
           </Navbar.Header>
           <Nav>
-            <NavItem eventKey={1} href="#">Link</NavItem>
+            {this.renderProtectedPage()}
             <NavItem eventKey={2} href="#">Link</NavItem>
             <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
               <MenuItem eventKey={3.1}>Action</MenuItem>
