@@ -17,7 +17,7 @@ class Header extends Component {
       return(
         <NavItem 
           eventKey={4}  
-          onSelect={this.handleSignout} 
+          onSelect={this.handleSelect} 
           value="signout">
             Signout
         </NavItem>
