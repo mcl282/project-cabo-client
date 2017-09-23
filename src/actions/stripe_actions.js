@@ -4,7 +4,7 @@ import { ROOT_URL_VERSION } from './index.js';
 
 const jwt = localStorage.getItem('jwt');
 
-const auth_header = { 'Authorization': `Bearer  + ${jwt}`};
+const auth_header = { 'Authorization': `Bearer + ${jwt}`};
 
 
 export const createStripeCharge = (stripeToken, amount, callback) => {
