@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { AUTH_USER, UNAUTH_USER, AUTH_ERROR, SUBMIT_ADDRESS, FETCH_PROPERTIES } from './types';
 
+export * from './stripe_actions';
+
 let ROOT_URL = "";
 const API_VERSION = process.env.REACT_APP_ROOT_URL_API_VERSION;
 
@@ -10,8 +12,7 @@ if(process.env.NODE_ENV==='development') {
   ROOT_URL=process.env.REACT_APP_ROOT_URL_PROD;
 }
 
-const ROOT_URL_VERSION = `${ROOT_URL}/${API_VERSION}`;
-
+export const ROOT_URL_VERSION = `${ROOT_URL}/${API_VERSION}`;
 
 export function signinUser(values, callback) {
   const email = values.email;
