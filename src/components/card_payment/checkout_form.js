@@ -53,8 +53,8 @@ class CheckoutForm extends Component {
                 <CardSection />
               </div>
               <div className="form-group">
-                <Col xs={4} xsOffset={4} >
-                  <Col xs={10} xsOffset={1} >
+                <Col lg={4} lgOffset={4} >
+                  <Col lg={10} lgOffset={1} >
                     <Button bsStyle="primary" bsSize="large" block type="submit">Confirm order</Button>
                   </Col>
                 </Col>
@@ -64,7 +64,7 @@ class CheckoutForm extends Component {
         </Row>
         <br/>
         <Row>
-        <Col xs={4} xsOffset={4} >
+        <Col lg={4} lgOffset={4} >
           {this.renderError()}
         </Col>
       </Row>
