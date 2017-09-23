@@ -11,7 +11,7 @@ export const createStripeCharge = (stripeToken, amount, callback) => {
   return function (dispatch){
     
   axios({
-    method : 'post',
+    method : 'POST',
     url: `${ROOT_URL_VERSION}/charges.json`, 
     data: { stripeToken, amount }, 
     headers: auth_header })
