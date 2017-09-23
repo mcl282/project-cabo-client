@@ -4,7 +4,7 @@ import { ROOT_URL_VERSION } from './index.js';
 
 const jwt = localStorage.getItem('jwt');
 
-const auth_header = { 'Authorization': `Bearer + ${jwt}`};
+const auth_header = { 'Authorization': `Bearer ${jwt}`};
 
 
 export const createStripeCharge = (stripeToken, amount, callback) => {
@@ -16,7 +16,7 @@ export const createStripeCharge = (stripeToken, amount, callback) => {
     data: { stripeToken, amount }, 
     headers: auth_header })
     .then(response => {
-      console.log(response)
+      console.log(response);
       dispatch({ 
         type: CREATE_STRIPE_CHARGE,
         payload: response
@@ -26,6 +26,7 @@ export const createStripeCharge = (stripeToken, amount, callback) => {
     .catch( error => {
     //if request is bad, show an error to the user
     console.log(error.response);
+    console.log(auth_header);
     dispatch({
       type: STRIPE_CHARGE_ERROR,
       payload: error.response.data
