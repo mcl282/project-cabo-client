@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {StripeProvider, Elements} from 'react-stripe-elements';
-import {stripePublishableKey} from '../keys';
+
 
 import MyStoreCheckout from '../components/card_payment/my_store_checkout';
 
-const stripeApiKey= stripePublishableKey;
+const stripeApiKey= process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY;
 
 
 const TestPaymentPage = () => {

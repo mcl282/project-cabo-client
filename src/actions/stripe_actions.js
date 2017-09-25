@@ -1,11 +1,14 @@
 import axios from 'axios';
-import { CREATE_STRIPE_CHARGE, STRIPE_CHARGE_ERROR } from './types';
+import { CREATE_STRIPE_CHARGE, STRIPE_CHARGE_ERROR, FETCH_STRIPE_CHARGES} from './types';
 import { ROOT_URL_VERSION } from './index.js';
+import {auth_header} from './auth_header'
 
-const jwt = localStorage.getItem('jwt');
+const stripeApiUrl = "https://api.stripe.com/v1"
 
-const auth_header = { 'Authorization': `Bearer ${jwt}`};
+const stripeSk = process.env.REACT_APP_STRIPE_SECRET_KEY;
 
+
+const stripeConfig = { 'Authorization': `Bearer ${stripeSk}`};
 
 export const createStripeCharge = (stripeToken, amount, callback) => {
   return function (dispatch){
@@ -14,7 +17,8 @@ export const createStripeCharge = (stripeToken, amount, callback) => {
     method : 'POST',
     url: `${ROOT_URL_VERSION}/charges.json`, 
     data: { stripeToken, amount }, 
-    headers: auth_header })
+    headers: auth_header 
+  })
     .then(response => {
       console.log(response);
       dispatch({ 
@@ -26,7 +30,6 @@ export const createStripeCharge = (stripeToken, amount, callback) => {
     .catch( error => {
     //if request is bad, show an error to the user
     console.log(error.response);
-    console.log(auth_header);
     dispatch({
       type: STRIPE_CHARGE_ERROR,
       payload: error.response.data
@@ -34,3 +37,20 @@ export const createStripeCharge = (stripeToken, amount, callback) => {
     })
   }
 }
+
+export const fetchStripeCharges = (stripeSecretKey) => {
+  return function(dispatch){
+    axios({
+      method: 'GET',
+      url: `${stripeApiUrl}/charges`, 
+      headers: stripeConfig
+    })
+    .then(response => {
+      dispatch({
+        type:FETCH_STRIPE_CHARGES,
+        payload: response.data
+      })
+    })
+  }  
+}
+

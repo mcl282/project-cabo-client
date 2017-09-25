@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { AUTH_USER, UNAUTH_USER, AUTH_ERROR, SUBMIT_ADDRESS, FETCH_PROPERTIES } from './types';
+import {auth_header} from './auth_header'
 
 export * from './stripe_actions';
 
@@ -98,7 +99,10 @@ export function resetPassword(email, password, resetToken, callback) {
 
 export function fetchProperties() {
   return function (dispatch){
-    axios.get(`${ROOT_URL_VERSION}/properties`)
+    axios({
+      method: 'GET',
+      url:  `${ROOT_URL_VERSION}/properties`, 
+      headers: auth_header})
     .then(response => {
       dispatch({ 
         type: FETCH_PROPERTIES,

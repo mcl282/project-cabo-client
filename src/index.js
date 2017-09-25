@@ -19,6 +19,7 @@ import PropertyList from './components/property_list';
 import TestComponent from './components/test';
 import TestProtectedComponent from './components/test_protected';
 import TestPaymentPage from './components/test_payment_page';
+import Charges from './components/stripe_charges';
 import './index.css';
 import reducers from './reducers';
 import { AUTH_USER } from './actions/types';
@@ -52,6 +53,7 @@ ReactDOM.render(
           <Route path="/test" component={TestComponent} />
           <Route path="/test-protected" component={RequireAuth(TestProtectedComponent)} />
           <Route path="/payment-page" component={TestPaymentPage} />
+          <Route path="/charges" component={Charges} />
         </Switch>
       </div>
     </BrowserRouter>
