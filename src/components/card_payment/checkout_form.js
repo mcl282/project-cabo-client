@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import {injectStripe} from 'react-stripe-elements';
 import * as actions from '../../actions';
 import { withRouter } from 'react-router-dom';
-import { Button, FormGroup, Col, Row, Alert } from 'react-bootstrap';
+import { Button, Col, Row, Alert } from 'react-bootstrap';
 
 // import AddressSection from './AddressSection'; <AddressSection />
 import CardSection from './card_section';
@@ -49,16 +49,16 @@ class CheckoutForm extends Component {
           <div>
             <form
               onSubmit={this.handleSubmit}>
-              <FormGroup>
+              <div className="form-group ">
                 <CardSection />
-              </FormGroup>
-              <FormGroup>
+              </div>
+              <div className="form-group">
                 <Col lg={4} lgOffset={4} >
                   <Col lg={10} lgOffset={1} >
                     <Button bsStyle="primary" bsSize="large" block type="submit">Confirm order</Button>
                   </Col>
                 </Col>
-              </FormGroup>
+              </div>
             </form>
           </div>
         </Row>
