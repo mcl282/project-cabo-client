@@ -9,9 +9,9 @@ const stripeApiKey = process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY;
 
 
 const TestPaymentPage = () => {
+  console.log(stripeApiKey);
   return (
     <div>
-      <p>Pay button on this page</p>
       <div>
         <StripeProvider apiKey={`${stripeApiKey}`}>
           <MyStoreCheckout />
