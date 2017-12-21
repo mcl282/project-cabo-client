@@ -63,6 +63,21 @@ class Header extends Component {
     }
   }
   
+  renderCreateTransferCustomerPage = () => {
+    if(this.props.authenticated){
+      return(
+        <NavItem 
+          eventKey={8}  
+          onSelect={this.handleSelect} 
+          value="create-transfer-customer">
+            Create Transfer Customer
+        </NavItem>
+        );
+    }
+  }
+
+
+
   
   
    render() {
@@ -78,7 +93,7 @@ class Header extends Component {
             {this.renderProtectedPage()}
             <NavItem eventKey={2} href="#">Link</NavItem>
             <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
-              <MenuItem eventKey={3.1}>Action</MenuItem>
+              <MenuItem eventKey={3.1}>{this.renderCreateTransferCustomerPage()}</MenuItem>
               <MenuItem eventKey={3.2}>Another action</MenuItem>
               <MenuItem eventKey={3.3}>Something else here</MenuItem>
               <MenuItem divider />
