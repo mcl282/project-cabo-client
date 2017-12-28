@@ -76,8 +76,31 @@ class Header extends Component {
     }
   }
 
+  renderTransferAccountInfo = () => {
+    if(this.props.authenticated){
+      return(
+        <NavItem 
+          eventKey={9}  
+          onSelect={this.handleSelect} 
+          value="transfer-account-info">
+            Transfer Account Info
+        </NavItem>
+        );
+    }
+  }
 
-
+  renderTransferSource = () => {
+    if(this.props.authenticated){
+      return(
+        <NavItem 
+          eventKey={10}  
+          onSelect={this.handleSelect} 
+          value="transfer-source">
+            Create Transfer Account
+        </NavItem>
+        );
+    }
+  }
   
   
    render() {
@@ -91,7 +114,7 @@ class Header extends Component {
           </Navbar.Header>
           <Nav>
             {this.renderProtectedPage()}
-            <NavItem eventKey={2} href="#">Link</NavItem>
+            <NavItem eventKey={2} >Link</NavItem>
             <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
               <MenuItem eventKey={3.1}>{this.renderCreateTransferCustomerPage()}</MenuItem>
               <MenuItem eventKey={3.2}>Another action</MenuItem>
@@ -102,6 +125,8 @@ class Header extends Component {
             {this.renderSignout()}
             {this.renderSignin()}
             {this.renderSignup()}
+            {this.renderTransferAccountInfo()}
+            {this.renderTransferSource()}
           </Nav>
         </Navbar>
       );

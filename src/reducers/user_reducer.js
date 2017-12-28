@@ -4,6 +4,6 @@ export default function(state={}, action) {
   switch(action.type){
     case FETCH_USER:
       return {...state, userInfo: action.payload.data};
+    default: return state;
   }
-  return state;
 }

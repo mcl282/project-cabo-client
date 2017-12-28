@@ -8,7 +8,6 @@ export default function(state={}, action) {
       return {...state, error: action.payload, stripe_successful_charge: false};      
     case FETCH_STRIPE_CHARGES:
       return {...state, stripeCharges: action.payload.data};      
-      
+    default:  return state;      
   }
-  return state;
 }

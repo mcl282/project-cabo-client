@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// eslint-disable-next-line
 import {StripeProvider, Elements} from 'react-stripe-elements';
 
 

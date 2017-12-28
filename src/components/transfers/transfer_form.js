@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+// eslint-disable-next-line
 import { Field, reduxForm, initialize } from 'redux-form';
 import * as actions from '../../actions';
 
@@ -22,8 +23,8 @@ class CreateTransferCustomer extends Component {
   
   handleInitialize() {
     const initData = {
-      "firstName": /*this.props.user.first_name*/'a',
-      "lastName": /*this.props.user.last_name*/'a',
+      "firstName": this.props.user.first_name,
+      "lastName": this.props.user.last_name,
       "email": this.props.user.email
     }; 
     this.props.initialize(initData);
@@ -53,7 +54,7 @@ class CreateTransferCustomer extends Component {
 
   onSubmit(values) {
     this.props.createTransferCustomer(values, () => {
-      this.props.history.push('/test-protected');
+      this.props.history.push('/create-transfer-source');
     });
   }  
   
@@ -69,45 +70,39 @@ class CreateTransferCustomer extends Component {
     }
   }
 
-  renderAlert() {
-    if(this.props.errorMessage) {
-      return(
-        <div className="alert alert-danger">
-          <strong>Ooops!</strong> {this.props.errorMessage}
-        </div>
-      )
-    }
-  }
-  
   render() {
   const { handleSubmit } = this.props;
   
-    
-    return (
-      <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-        <Field
-          label="First Name"
-          name="firstName"
-          type="text"
-          component={this.renderField}
-        />        
-        <Field
-          label="Last Name"
-          name="lastName"
-          type="text"
-          component={this.renderField}
-        /> 
-        <Field
-          label="Email"
-          name="email"
-          type="email"
-          component={this.renderField}
-        />
-        {this.renderAlert()}
-        <button type="submit" className="btn btn-primary">Create Transfer Customer</button>
-        
-      </form>
-    );
+    if(!this.props.user) {
+      return (
+        <div>
+        </div>
+      )} else {
+      return (
+        <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+          <Field
+            label="First Name"
+            name="firstName"
+            type="text"
+            component={this.renderField}
+          />        
+          <Field
+            label="Last Name"
+            name="lastName"
+            type="text"
+            component={this.renderField}
+          /> 
+          <Field
+            label="Email"
+            name="email"
+            type="email"
+            component={this.renderField}
+          />
+          {this.renderAlert()}
+          <button type="submit" className="btn btn-primary">Create Transfer Customer</button>
+        </form>
+      );
+    }
   }
 }
 
@@ -132,7 +127,7 @@ function validate(values) {
 function mapStateToProps(state) {
   return {
     user: state.user.userInfo,
-    errorMessage: state.transferCustomer.createTransferCustomerError
+    errorMessage: state.transfers.createTransferCustomerError
   };
 }
 
