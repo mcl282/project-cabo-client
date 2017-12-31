@@ -5,9 +5,7 @@ class TransferSourceForm extends Component {
   render() {
     return (
       <div>
-        <p>
-          <PlaidAuthComponent />
-        </p>
+        <PlaidAuthComponent />
       </div>
       )
   }
