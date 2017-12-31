@@ -16,11 +16,18 @@ export default function(state={}, action) {
     case CREATE_TRANSFER_SOURCE_ERROR:
       return {...state, createTransferSourceError: action.payload.data};    
     case FETCH_TRANSFER_SOURCE:
-      return {...state, transferSource: action.payload.data};
+      return {
+        ...state, 
+        transferSource: action.payload.data.funding_source_data, 
+        user:  action.payload.data.user, 
+        removed: false};
     case FETCH_TRANSFER_SOURCE_ERROR:
       return {...state, fetchTransferSourceError: action.payload, removed: false};
     case UPDATE_TRANSFER_SOURCE:
-      return {...state, updateTransferSource: action.payload.data, removed: action.payload.data.removed};
+      return {
+        ...state, 
+        transferSource: action.payload.data.funding_source_data, 
+        removed: action.payload.data.removed};
       
     default: return state;
   }

@@ -13,11 +13,16 @@ class TransferAccounts extends Component {
 
   renderAccountItem = () => {
 
-    let renderAccountItem = false;
-    renderAccountItem = this.props.data.transferSource && !this.props.data.removed ? true : false;
+    let renderAccountItem = 
+      this.props.data.transferSource && 
+      this.props.data.transferSource !== null &&
+      !this.props.data.removed  ? true : false;
     
+
+    console.log(this.props.data.transferSource)
     if(renderAccountItem) {
-      let fundingSourceData = this.props.data.transferSource.funding_source_data;
+      
+      let fundingSourceData = this.props.data.transferSource;
       let userId = this.props.data.transferSource.user;
       
       return(
