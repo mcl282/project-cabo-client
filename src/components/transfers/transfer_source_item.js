@@ -1,11 +1,11 @@
 import React from 'react';
 
-const TransferSourceItem = ( {sourceData} ) => {
+const TransferSourceItem = ( {fundingSourceData} ) => {
 
   return (
     <div>
-      <h1>{sourceData.bankName}</h1>
-      <h2>{sourceData.bankAccountType}</h2>
+      <h1>{fundingSourceData.bankName}</h1>
+      <h2>{fundingSourceData.bankAccountType}</h2>
     </div>
     )
 }

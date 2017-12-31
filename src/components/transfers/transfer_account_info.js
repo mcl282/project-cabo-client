@@ -13,17 +13,19 @@ class TransferAccounts extends Component {
 
   renderAccountItem = () => {
 
-
-    if(this.props.data.transferSource) {
-      let sourceData = this.props.data.transferSource.source;
-      let sourceId = this.props.data.transferSource.transferSourceId;
+    let renderAccountItem = false;
+    renderAccountItem = this.props.data.transferSource && !this.props.data.removed ? true : false;
+    
+    if(renderAccountItem) {
+      let fundingSourceData = this.props.data.transferSource.funding_source_data;
+      let userId = this.props.data.transferSource.user;
       
       return(
         <div>
-          <TransferSourceItem sourceData={sourceData} /> 
+          <TransferSourceItem fundingSourceData={fundingSourceData} /> 
           <Button 
             className="btn btn-primary btn-sm"
-            onClick={()=>this.handleupdateTransferSource({removed: true}, sourceId)}
+            onClick={()=>this.handleupdateTransferSource({removed: true}, userId)}
             >
               Unlink Account
           </Button>
@@ -38,6 +40,7 @@ class TransferAccounts extends Component {
   }
 
   render(){
+    
     return( 
       <div>
         {this.renderAccountItem()}

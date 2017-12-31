@@ -1,4 +1,11 @@
-import { CREATE_TRANSFER_CUSTOMER, CREATE_TRANSFER_CUSTOMER_ERROR,CREATE_TRANSFER_SOURCE_ERROR, FETCH_TRANSFER_SOURCE, FETCH_TRANSFER_SOURCE_ERROR } from '../actions/types';
+import { 
+  CREATE_TRANSFER_CUSTOMER, 
+  CREATE_TRANSFER_CUSTOMER_ERROR,
+  CREATE_TRANSFER_SOURCE_ERROR, 
+  FETCH_TRANSFER_SOURCE, 
+  FETCH_TRANSFER_SOURCE_ERROR, 
+  UPDATE_TRANSFER_SOURCE 
+} from '../actions/types';
 
 export default function(state={}, action) {
   switch(action.type){
@@ -11,7 +18,9 @@ export default function(state={}, action) {
     case FETCH_TRANSFER_SOURCE:
       return {...state, transferSource: action.payload.data};
     case FETCH_TRANSFER_SOURCE_ERROR:
-      return {...state, fetchTransferSourceError: action.paylod.data};
+      return {...state, fetchTransferSourceError: action.payload, removed: false};
+    case UPDATE_TRANSFER_SOURCE:
+      return {...state, updateTransferSource: action.payload.data, removed: action.payload.data.removed};
       
     default: return state;
   }
