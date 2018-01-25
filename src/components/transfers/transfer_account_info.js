@@ -23,14 +23,13 @@ class TransferAccounts extends Component {
     if(renderAccountItem) {
       
       let fundingSourceData = this.props.data.transferSource;
-      let userId = this.props.data.transferSource.user;
       
       return(
         <div>
           <TransferSourceItem fundingSourceData={fundingSourceData} /> 
           <Button 
             className="btn btn-primary btn-sm"
-            onClick={()=>this.handleupdateTransferSource({removed: true}, userId)}
+            onClick={()=>this.handleupdateTransferSource({removed: true})}
             >
               Unlink Account
           </Button>
@@ -40,8 +39,8 @@ class TransferAccounts extends Component {
   };
   
   handleupdateTransferSource = (values, id) => {
-    this.props.updateTransferSource(values, id);
-    console.log(values, id);
+    this.props.updateTransferSource(values);
+    console.log(values);
   }
 
   render(){

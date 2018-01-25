@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { CREATE_TRANSFER_CUSTOMER, CREATE_TRANSFER_CUSTOMER_ERROR, CREATE_TRANSFER_SOURCE, CREATE_TRANSFER_SOURCE_ERROR, FETCH_TRANSFER_SOURCE, FETCH_TRANSFER_SOURCE_ERROR, UPDATE_TRANSFER_SOURCE, UPDATE_TRANSFER_SOURCE_ERROR } from './types';
+import { CREATE_TRANSFER_CUSTOMER, CREATE_TRANSFER_CUSTOMER_ERROR, CREATE_TRANSFER_SOURCE, CREATE_TRANSFER_SOURCE_ERROR, FETCH_TRANSFER_SOURCE, FETCH_TRANSFER_SOURCE_ERROR, UPDATE_TRANSFER_SOURCE, UPDATE_TRANSFER_SOURCE_ERROR, UPDATE_TRANSFER_CUSTOMER, UPDATE_TRANSFER_CUSTOMER_ERROR } from './types';
 import { ROOT_URL_VERSION } from './index.js';
 import {auth_header} from './auth_header'
 
@@ -85,12 +85,38 @@ export const fetchTransferSource = () => {
   };
 };
 
-export const updateTransferSource = (values, id, callback) => {
+export const updateTransferSource = (values, callback) => {
   return function (dispatch){
-  console.log(id)
   axios({
-    method: 'PATCH',
-    url: `${ROOT_URL_VERSION}/transfer_sources/${id}.json`,
+    method: 'POST',
+    url: `${ROOT_URL_VERSION}/transfer_sources/update_transfer_source.json`,
+    data: { values },
+    headers: auth_header 
+  })
+    .then(response => {
+      console.log(response);
+      dispatch({ 
+        type: UPDATE_TRANSFER_SOURCE,
+        payload: response
+      });
+    })
+    .catch( error => {
+    //if request is bad, show an error to the user
+    console.log(error.response);
+    dispatch({
+      type: UPDATE_TRANSFER_SOURCE_ERROR,
+      payload: error.response
+    });
+    });
+  };
+};
+
+export const verifyCustomerInfo = (values, callback) => {
+  return function (dispatch){
+  
+  axios({
+    method: 'POST',
+    url: `${ROOT_URL_VERSION}/transfer_customers/update_transfer_customer`,
     data: { values },
     headers: auth_header 
   })

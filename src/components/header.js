@@ -66,12 +66,12 @@ class Header extends Component {
   renderCreateTransferCustomerPage = () => {
     if(this.props.authenticated){
       return(
-        <NavItem 
+        <MenuItem 
           eventKey={8}  
           onSelect={this.handleSelect} 
           value="create-transfer-customer">
             Create Transfer Customer
-        </NavItem>
+        </MenuItem>
         );
     }
   }
@@ -116,9 +116,9 @@ class Header extends Component {
             {this.renderProtectedPage()}
             <NavItem eventKey={2} >Link</NavItem>
             <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
-              <MenuItem eventKey={3.1}>{this.renderCreateTransferCustomerPage()}</MenuItem>
-              <MenuItem eventKey={3.2}>Another action</MenuItem>
-              <MenuItem eventKey={3.3}>Something else here</MenuItem>
+              {this.renderCreateTransferCustomerPage()}
+              <MenuItem eventKey={3.1}>Another action</MenuItem>
+              <MenuItem eventKey={3.2}>Something else here</MenuItem>
               <MenuItem divider />
               <MenuItem eventKey={3.3}>Separated link</MenuItem>
             </NavDropdown>
@@ -139,5 +139,3 @@ function mapStateToProps(state) {
   }
 
 export default connect(mapStateToProps)(withRouter(Header))
-
-

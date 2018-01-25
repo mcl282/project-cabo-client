@@ -24,3 +24,6 @@ export const FETCH_TRANSFER_SOURCE_ERROR = 'fetch_transfer_source_error';
 
 export const UPDATE_TRANSFER_SOURCE = 'update_transfer_source';
 export const UPDATE_TRANSFER_SOURCE_ERROR = 'update_transfer_source_error';
+
+export const UPDATE_TRANSFER_CUSTOMER = 'update_transfer_customer';
+export const UPDATE_TRANSFER_CUSTOMER_ERROR = 'update_transfer_customer_error';

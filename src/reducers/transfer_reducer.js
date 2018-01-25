@@ -1,6 +1,7 @@
 import { 
   CREATE_TRANSFER_CUSTOMER, 
   CREATE_TRANSFER_CUSTOMER_ERROR,
+  CREATE_TRANSFER_SOURCE,
   CREATE_TRANSFER_SOURCE_ERROR, 
   FETCH_TRANSFER_SOURCE, 
   FETCH_TRANSFER_SOURCE_ERROR, 
@@ -12,9 +13,11 @@ export default function(state={}, action) {
     case CREATE_TRANSFER_CUSTOMER:
       return {...state, createTransferCustomerSuccess: action.payload.data};
     case CREATE_TRANSFER_CUSTOMER_ERROR:
-      return {...state, createTransferCustomerError: action.payload.data};    
+      return {...state, createTransferCustomerError: action.payload};    
+    case CREATE_TRANSFER_SOURCE:
+      return {...state, createTransferSource: action.payload.data}; 
     case CREATE_TRANSFER_SOURCE_ERROR:
-      return {...state, createTransferSourceError: action.payload.data};    
+      return {...state, createTransferSourceError: action.payload};    
     case FETCH_TRANSFER_SOURCE:
       return {
         ...state, 

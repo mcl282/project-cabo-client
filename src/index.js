@@ -20,9 +20,10 @@ import TestComponent from './components/test';
 import TestProtectedComponent from './components/test_protected';
 import TestPaymentPage from './components/test_payment_page';
 import Charges from './components/stripe_charges';
-import CreateTransferCustomer from './components/transfers/transfer_form';
+import CreateTransferCustomer from './components/transfers/create_transfer_customer_form';
 import TransferAccountForm from './components/transfers/transfer_account_form';
 import TransferAccountInfo from './components/transfers/transfer_account_info';
+import VerifyCustomerAddress from './components/transfers/verify_customer_address_form';
 import TransferSource from './components/transfers/transfer_account_form';
 import './index.css';
 import reducers from './reducers';
@@ -59,6 +60,7 @@ ReactDOM.render(
           <Route path="/payment-page" component={TestPaymentPage} />
           <Route path="/charges" component={Charges} />
           <Route path="/create-transfer-customer" component={CreateTransferCustomer} />
+          <Route path="/verify-transfer-customer" component={VerifyCustomerAddress} />
           <Route path="/create-transfer-source" component={TransferAccountForm} />
           <Route path="/transfer-account-info" component={TransferAccountInfo} />
           <Route path="/transfer-source" component={TransferSource} />
