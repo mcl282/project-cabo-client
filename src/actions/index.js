@@ -6,6 +6,7 @@ import {auth_header} from './auth_header'
 export * from './stripe_actions';
 export * from './transfer_actions';
 export * from './user_actions';
+export * from './dropzone_actions';
 
 export let ROOT_URL = "";
 const API_VERSION = process.env.REACT_APP_ROOT_URL_API_VERSION;

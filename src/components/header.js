@@ -1,38 +1,43 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import {   Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+import {
+  Navbar, 
+  NavbarBrand, 
+  Nav, 
+  NavLink, 
+  DropdownToggle, 
+  UncontrolledDropdown, 
+  DropdownItem, 
+  DropdownMenu } from 'reactstrap';
 import { connect } from 'react-redux';
 
 
 class Header extends Component {
 
 
-  handleSelect = (eventKey, event) => {
-    this.props.history.push(`/${event.target.attributes[0].value}`);
+  handleSelect = (value) => {
+    console.log(value)
+    this.props.history.push(`/${value}`);
   }    
   
   
   renderSignout = () => {
     if(this.props.authenticated){
       return(
-        <NavItem 
-          eventKey={4}  
-          onSelect={this.handleSelect} 
-          value="signout">
+        <DropdownItem 
+          tag={Link} to="/signout">
             Signout
-        </NavItem>
+        </DropdownItem>
         );
     }
   } 
   renderSignin = () => {
     if(!this.props.authenticated){
       return(
-        <NavItem 
-          eventKey={5}  
-          onSelect={this.handleSelect} 
-          value="signin">
+        <DropdownItem 
+          tag={Link} to="/signin">
             Signin
-        </NavItem>
+        </DropdownItem>
         );
     }
   }   
@@ -40,12 +45,10 @@ class Header extends Component {
   renderSignup = () => {
     if(!this.props.authenticated){
       return(
-        <NavItem 
-          eventKey={6}  
-          onSelect={this.handleSelect} 
-          value="signup">
+        <DropdownItem 
+          tag={Link} to="/signup">
             Signup
-        </NavItem>
+        </DropdownItem>
         );
     }
   }
@@ -53,12 +56,10 @@ class Header extends Component {
   renderProtectedPage = () => {
     if(!this.props.authenticated){
       return(
-        <NavItem 
-          eventKey={7}  
-          onSelect={this.handleSelect} 
-          value="test-protected">
+        <NavLink 
+        tag={Link} to="/test-protected">
             Protected Page
-        </NavItem>
+        </NavLink>
         );
     }
   }
@@ -66,12 +67,10 @@ class Header extends Component {
   renderCreateTransferCustomerPage = () => {
     if(this.props.authenticated){
       return(
-        <MenuItem 
-          eventKey={8}  
-          onSelect={this.handleSelect} 
-          value="create-transfer-customer">
+        <DropdownItem
+          tag={Link} to="/create-transfer-customer">
             Create Transfer Customer
-        </MenuItem>
+        </DropdownItem>
         );
     }
   }
@@ -79,12 +78,10 @@ class Header extends Component {
   renderTransferAccountInfo = () => {
     if(this.props.authenticated){
       return(
-        <NavItem 
-          eventKey={9}  
-          onSelect={this.handleSelect} 
-          value="transfer-account-info">
+        <DropdownItem
+        tag={Link} to="/transfer-account-info">
             Transfer Account Info
-        </NavItem>
+        </DropdownItem>
         );
     }
   }
@@ -92,12 +89,10 @@ class Header extends Component {
   renderTransferSource = () => {
     if(this.props.authenticated){
       return(
-        <NavItem 
-          eventKey={10}  
-          onSelect={this.handleSelect} 
-          value="transfer-source">
+        <DropdownItem
+          tag={Link} to="/transfer-source">
             Create Transfer Account
-        </NavItem>
+        </DropdownItem>
         );
     }
   }
@@ -106,27 +101,27 @@ class Header extends Component {
    render() {
     
       return (
-        <Navbar fluid={true}>
-          <Navbar.Header>
-            <Navbar.Brand>
-              <Link to="/">Project Cabo</Link>
-            </Navbar.Brand>
-          </Navbar.Header>
-          <Nav>
+        <Navbar color="light" light expand="md">
+          <NavbarBrand href="/">Project Cabo</NavbarBrand>
+          <Nav className="ml-auto" navbar>
             {this.renderProtectedPage()}
-            <NavItem eventKey={2} >Link</NavItem>
-            <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
-              {this.renderCreateTransferCustomerPage()}
-              <MenuItem eventKey={3.1}>Another action</MenuItem>
-              <MenuItem eventKey={3.2}>Something else here</MenuItem>
-              <MenuItem divider />
-              <MenuItem eventKey={3.3}>Separated link</MenuItem>
-            </NavDropdown>
-            {this.renderSignout()}
-            {this.renderSignin()}
-            {this.renderSignup()}
-            {this.renderTransferAccountInfo()}
-            {this.renderTransferSource()}
+            <NavLink>Link</NavLink>
+              <UncontrolledDropdown nav inNavbar>
+                <DropdownToggle nav caret>
+                  Options
+                </DropdownToggle>
+                <DropdownMenu right>
+                  {this.renderSignout()}
+                  {this.renderSignin()}
+                  {this.renderSignup()}
+                  {this.renderTransferAccountInfo()}
+                  {this.renderTransferSource()}
+                  <DropdownItem divider />
+                  <DropdownItem>
+                    Reset
+                  </DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>
           </Nav>
         </Navbar>
       );
@@ -139,3 +134,7 @@ function mapStateToProps(state) {
   }
 
 export default connect(mapStateToProps)(withRouter(Header))
+
+
+
+ 

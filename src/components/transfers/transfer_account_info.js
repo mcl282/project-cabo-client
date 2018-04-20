@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'; 
-import { Button } from 'react-bootstrap';
+import { Button } from 'reactstrap';
 import * as actions from '../../actions';
 import TransferSourceItem from './transfer_source_item';
 

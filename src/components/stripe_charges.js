@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'; 
 import * as actions from '../actions';
-import {ListGroup} from 'react-bootstrap';
+import {ListGroup} from 'reactstrap';
 import StripeChargeItem from './stripe_charge_item';
 
 class stripeCharges extends Component {

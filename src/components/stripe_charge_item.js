@@ -1,6 +1,6 @@
 /*eslint no-unused-expressions: ["error", { "allowTernary": true }]*/
 import React from 'react';
-import {ListGroupItem} from 'react-bootstrap';
+import {ListGroupItem} from 'reactstrap';
 import * as moment from 'moment';
 import numeral from 'numeral';
 

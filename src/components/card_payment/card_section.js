@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {CardElement} from 'react-stripe-elements';
 import './stripe.css'
-import { Col } from 'react-bootstrap';
+import { Col } from 'reactstrap';
 
 class CardSection extends Component {
   render() {

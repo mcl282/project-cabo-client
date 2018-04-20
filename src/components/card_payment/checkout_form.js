@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import {injectStripe} from 'react-stripe-elements';
 import * as actions from '../../actions';
 import { withRouter } from 'react-router-dom';
-import { Button, Col, Row, Alert } from 'react-bootstrap';
+import { Button, Col, Row, Alert } from 'reactstrap';
 
 // import AddressSection from './AddressSection'; <AddressSection />
 import CardSection from './card_section';

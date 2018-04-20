@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import Script from 'react-load-script'
 import { connect } from 'react-redux'
-import { Col, Row, Button, FormGroup} from 'react-bootstrap';
+import { Col, Row, Button, FormGroup} from 'reactstrap';
 import * as actions from '../../actions';
 
 class VerifyCustomerAddress extends Component {

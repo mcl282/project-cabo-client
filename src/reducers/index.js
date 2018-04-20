@@ -4,6 +4,7 @@ import userReducer from './user_reducer';
 import propertyReducer from './property_reducer';
 import stripeReducer from './stripe_reducer';
 import transferReducer from './transfer_reducer';
+import files from './file_upload_reducer';
 import { reducer as form } from 'redux-form';
 
 /* const rootReducer = combineReducers({
@@ -23,7 +24,8 @@ const appReducer = combineReducers({
   user: userReducer,
   properties: propertyReducer,
   stripe: stripeReducer,
-  transfers: transferReducer
+  transfers: transferReducer,
+  files: files
 })
 
 const rootReducer = (state, action) => {

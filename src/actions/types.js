@@ -27,3 +27,6 @@ export const UPDATE_TRANSFER_SOURCE_ERROR = 'update_transfer_source_error';
 
 export const UPDATE_TRANSFER_CUSTOMER = 'update_transfer_customer';
 export const UPDATE_TRANSFER_CUSTOMER_ERROR = 'update_transfer_customer_error';
+
+export const UPLOAD_FILE = 'upload_file';
+export const UPLOAD_FILE_ERROR = 'upload_file_error';
