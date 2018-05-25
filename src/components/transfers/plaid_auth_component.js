@@ -19,7 +19,7 @@ class PlaidAuthComponent extends Component {
       <div>
         <PlaidLink
           publicKey={`${plaidPublicKey}`}
-          product="auth"
+          product={['auth']}
           env="sandbox"
           clientName="plaidname"
           selectAccount={true}

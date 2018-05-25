@@ -5,6 +5,7 @@ import {
   NavbarBrand, 
   Nav, 
   NavLink, 
+  NavItem,
   DropdownToggle, 
   UncontrolledDropdown, 
   DropdownItem, 
@@ -96,7 +97,18 @@ class Header extends Component {
         );
     }
   }
-  
+
+  renderCreateProperty = () => {
+    if(this.props.authenticated){
+      return(
+        <NavLink
+          tag={Link} to="/create-property">
+            Create Property
+        </NavLink>
+        
+        );
+    }
+  }  
   
    render() {
     
@@ -105,7 +117,7 @@ class Header extends Component {
           <NavbarBrand href="/">Project Cabo</NavbarBrand>
           <Nav className="ml-auto" navbar>
             {this.renderProtectedPage()}
-            <NavLink>Link</NavLink>
+            {this.renderCreateProperty()}
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
                   Options

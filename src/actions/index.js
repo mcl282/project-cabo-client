@@ -7,6 +7,8 @@ export * from './stripe_actions';
 export * from './transfer_actions';
 export * from './user_actions';
 export * from './dropzone_actions';
+export * from './property_actions';
+export * from './unit_actions';
 
 export let ROOT_URL = "";
 const API_VERSION = process.env.REACT_APP_ROOT_URL_API_VERSION;

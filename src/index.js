@@ -15,7 +15,6 @@ import RequireAuth from './components/auth/require_auth';
 import ReqeustPasswordReset from './components/auth/request_password_reset';
 import PasswordReset from './components/auth/password_reset';
 import AddressContainer from './components/containers/address_container';
-import PropertyList from './components/property_list';
 import TestComponent from './components/test';
 import TestProtectedComponent from './components/test_protected';
 import TestPaymentPage from './components/test_payment_page';
@@ -25,6 +24,12 @@ import TransferAccountForm from './components/transfers/transfer_account_form';
 import TransferAccountInfo from './components/transfers/transfer_account_info';
 import VerifyCustomerAddress from './components/transfers/verify_customer_address_form';
 import TransferSource from './components/transfers/transfer_account_form';
+import CreateProperty from './components/properties/property_create';
+import PropertyList from './components/properties/property_list';
+import CreateUnit from './components/unit/unit_create';
+import ShowUnit from './components/unit/unit_show';
+import PropertyShow from './components/properties/property_show';
+
 import './index.css';
 import reducers from './reducers';
 import { AUTH_USER } from './actions/types';
@@ -54,7 +59,6 @@ ReactDOM.render(
           <Route path="/request-password-reset" component={ReqeustPasswordReset} />
           <Route path="/password-reset/:resetToken/:email" component={PasswordReset} />
           <Route path="/address" component={AddressContainer} />
-          <Route path="/property-list" component={PropertyList} />
           <Route path="/test" component={TestComponent} />
           <Route path="/test-protected" component={RequireAuth(TestProtectedComponent)} />
           <Route path="/payment-page" component={TestPaymentPage} />
@@ -64,6 +68,11 @@ ReactDOM.render(
           <Route path="/create-transfer-source" component={TransferAccountForm} />
           <Route path="/transfer-account-info" component={TransferAccountInfo} />
           <Route path="/transfer-source" component={TransferSource} />
+          <Route path="/create-property" component={CreateProperty} />
+          <Route path="/create-unit" component={CreateUnit} />
+          <Route path="/units/:id" component={ShowUnit} />
+          <Route exact path="/properties" component={PropertyList} />
+          <Route path="/properties/:id" component={PropertyShow} />
         </Switch>
       </div>
     </BrowserRouter>
